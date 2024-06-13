@@ -3,18 +3,41 @@ public class FlyodsCycleII {
         
     }public ListNode detectCycle(ListNode head) {
 
-        ListNode slow_pointer= head;
-        ListNode fast_pointer= head;
-
-        while(slow_pointer!=null && fast_pointer!=null){
-            slow_pointer= slow_pointer.next;
-            fast_pointer= fast_pointer.next.next;
-            if(slow_pointer==fast_pointer){
-                return slow_pointer;
+        ListNode slow = head;  
+        ListNode fast = head;  
+    
+        // Phase 1: Detect the loop
+        while (fast != null && fast.next != null) {
+            // Move slow one step
+            slow = slow.next;        
+            
+            // Move fast two steps
+            fast = fast.next.next;  
+    
+            // If slow and fast meet,
+            // a loop is detected
+            if (slow == fast) {
+                // Reset the slow pointer
+                // to the head of the list
+                slow = head; 
+    
+                // Phase 2: Find the first node of the loop
+                while (slow != fast) {
+                    // Move slow and fast one step
+                    // at a time
+                    slow = slow.next;  
+                    fast = fast.next;  
+    
+                    // When slow and fast meet again,
+                    // it's the first node of the loop
+                }
+                
+                // Return the first node of the loop
+                return slow;  
             }
-            }
-          return -1;
         }
-
-
+        
+        // If no loop is found, return null
+        return null; 
     }
+}
