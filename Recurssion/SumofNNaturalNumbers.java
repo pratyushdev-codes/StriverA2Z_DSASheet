@@ -11,6 +11,6 @@ public class SumofNNaturalNumbers {
         }
 
         int temp = Sum(N-1);
-        return temp +N;
+        return temp +N; 
     }
 }
