@@ -17,12 +17,13 @@ public class CombinationSum {
             }
             return ;
         }
+        //pick
         if(candidates[index]<=target){
             ds.add(candidates[index]);
             combination(candidates, target-candidates[index], index, ans, ds);
             ds.remove(ds.size()-1);
         }
-
+        //unpick
         combination(candidates, target, index+1, ans, ds);
     }
 }
