@@ -3,7 +3,7 @@ import java.util.List;
 public class Subset {
     public static void main(String[] args) {
         
-    } public List<List<Integer>> subsets(int[] nums) {
+    }   public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> subset = new ArrayList<>();
 
