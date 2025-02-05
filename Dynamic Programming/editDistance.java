@@ -37,8 +37,45 @@ public class editDistance {
         
     }   public int minDistance(String word1, String word2) {
 
+        return countWays(word1, word2, n-1, m-1 , dp);
 
 
+
+    }public int countWays(String s1, String s2, int i , int j , int dp[][]){
+
+        if(i==-1 && j==-1){
+            return 0;
+        
+        }
+
+        if(j==-1 && j!=-1){
+            return j+1;
+  
+        }
+
+        if(i!=-1 && j==-1){
+            return i+1;
+        }
+
+        if(dp[i][j]!=-1){
+            return dp[i][j];
+        }
+
+        if(s1.charAt(i)==s2.charAt(j)){
+            int x = countWays(s1, s2, i-1, j-1, dp);
+            dp[i][j]=x;
+            return dp[i][j];
+        }else{
+            int insertion = countWays( s1, s2, i , j-1 , dp );
+            int deletion = countWays(s1, s2, i-1 , j, dp);
+            int replacing = countWays(s1, s2, i-1, j-1, dp);
+
+            dp[i][j] = Math.min(insertion , Math.min(replacing, deletion))+1;
+
+            return dp[i][j];
+
+        }
+   
 
     }
 }
