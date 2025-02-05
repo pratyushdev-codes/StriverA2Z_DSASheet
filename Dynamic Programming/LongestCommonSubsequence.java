@@ -59,14 +59,40 @@ public class LongestCommonSubsequence {
         }
 
 
+        return LCS(text1, text2, n-1 , m-1 , dp);
 
 
 
 
-    }public static countLCS(String s1, String s2, int i , int j , int dp[][]){
+
+    }public static int LCS(String s1, String s2, int i , int j , int dp[][]){
             // BASE CASE:-
+            if(i==-1 || j==-1){
+               
+                return 0;
+            }
+
+            if(dp[i][j]!=-1){
+                return dp[i][j];
+            }
 
 
+
+            if(dp[i][j]!=-1){
+                return dp[i][j];
+            }
+
+            if(s1.charAt(i)==s2.charAt(j)){
+                int x = LCS(s1, s2, i-1 , j-1, dp);
+                dp[i][j]= x+1;
+                return dp[i][j];
+            }else{
+                int x = LCS(s1, s2, i-1 ,j , dp );
+                int y = LCS(s1, s2, i, j-1, dp);
+
+                dp[i][j] = Math.max(x, y);
+                return dp[i][j];
+            }
 
             
     }
