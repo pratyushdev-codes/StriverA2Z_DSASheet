@@ -12,7 +12,7 @@ public class BFSGraph {
             edges[i][0] = sc.nextInt();
             edges[i][1] = sc.nextInt();
         }
-        
+            
         sc.close(); // Closing scanner to avoid resource leak
 
         BFSGraph graph = new BFSGraph();
