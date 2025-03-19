@@ -42,12 +42,12 @@ public static int  topDownMaxValue(int W[] , int V [] , int knapsackW ){
             dp[0][w]=0;
         }
     }
-    for(int idx =1 ; idx<= n; idx++){
+    for(int idx =1 ; idx<= W.length; idx++){
         for(int w = 0 ; w<=knapsackW ; w++){
 
             int include = 0;
           if(W[idx]>=knapsackW){
-            dp[idx][W] = V[idx] + dp[idx-1][w-W[idx]]; 
+            dp[idx][w] = V[idx] + dp[idx-1][w-W[idx]]; 
 
             int exclude = 0+ dp[idx][idx-1];
             return dp[idx][w]= Math.max(include, exclude);
