@@ -8,18 +8,17 @@ public class UpperBound {
         while(start<end){
             int mid = start+ (end-start)/2;
 
-            if(arr[mid]==k){
-                return mid;
-            }else if(arr[mid]<k){
-                start = mid+1;
+
+            if(arr[mid]>k){
+                ans = mid;
+                end= mid;
             }else{
-                end = mid-1;
-                ans = end;
+                start = mid+1;
             }
 
         }
         return ans ;
     } 
-    // for highbound , return arr[mid]>k
+   
 
 }

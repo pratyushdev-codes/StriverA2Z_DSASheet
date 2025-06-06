@@ -1,19 +1,30 @@
 public class SearchInsertPos {
-    public static int searchInsert(int arr[], int k) {
-        int lo = 0;
-        int high = arr.length - 1;
-        while (lo <=high) {
-            int mid = lo + (high - lo) / 2;
+   public static void main(String[] args) {
+    int arr [] = {19, 94, 332,343};
+    int k = 19;
+    System.out.println(searchInsert(arr, k));
+    
+   } public static int searchInsert(int arr[], int k) {
+       int  start =0;
+       int end = arr.length;
 
-            if (arr[mid] == k) {
-                return mid;
-            } else if (arr[mid] < k) {
-                lo = mid + 1;
-            } else {
-                high = mid - 1;
-            }
+
+       while(start<end){
+        int mid = start+ (end-start)/2;
+
+        if(mid==k){
+            return mid;
+        }else if(mid<k){
+            start = mid+1;
+        }else{
+            end = mid-1;
         }
-
-        return lo;
+            
+       }
+         return start;  
     }
+
 }
+
+
+
