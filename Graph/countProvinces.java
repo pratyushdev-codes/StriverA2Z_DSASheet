@@ -1,43 +1,43 @@
-// Count number of connected components
+import java.util.ArrayList;
 
-// ALso - Count number of Provinces
+class countProvinces{
+    public static void main(String Args []){
 
-import java.util.Queue;
+    }public int findCircleNum(int[][] isConnected) {
 
-public class countProvinces {
-
-    public static void main(String[] args) {
-        
-    }  public void BFS(int u, int[][] isConnected, boolean[] visited){
-      
-        Queue<Integer> q  = new LinkedList<>();
-        // boolean visited [] = new boolean[n];
-
-        q.add(u);
-        while(!q.isEmpty()){
-            int rem = q.poll();
-
-            for(int i = 0 ; i< isConnected.length ; i++){
-                if(!visited[i] && isConnected[rem][i]==1){
-                    q.add(i);
-                    visited[i]= true;
-                }
-            }
-        }
-
-
-    }public int countConnectedComponents(int [][] isConnected){
         int n = isConnected.length;
-        boolean [] visited = new boolean[n];
-
-        int count = 0;
-        for(int i =0 ; i<n ; i++){
-            if(!visited[i]){
-                count++;
-                BFS(i, isConnected, visited);
-     
-            }
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for(int i =0 ; i < n ; i++){
+            graph.add(new ArrayList<>());
         }
-            return count;
+        for(int i = 0 ; i < n ; i++){
+           for(int j = 0 ; j < n; j++){
+            if(isConnected[i][j]==1 && i!=j){
+                graph.get(i).add(j);
+                graph.get(j).add(i);
+            
+                       }           }
+        }
+int vis [] = new int [n];
+int count =0;
+for(int i = 0 ; i < n ; i++){
+    if(vis[i]==0){
+        DFS(graph , i , vis);
+        count++;
     }
 }
+return count;
+
+    }
+
+        // we will do BFS here and increament the count
+    }public void DFS(ArrayList<ArrayList<Integer>> graph, int currNode, int [] vis){
+            vis[currNode]=1;
+            for(int nbr : graph.get(currNode)){
+                if(vis[nbr]==0){
+                    DFS(graph, nbr, vis);
+                }
+            }
+    }
+            
+    
