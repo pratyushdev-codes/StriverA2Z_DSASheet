@@ -1,38 +1,37 @@
 public class LowerBound {
 
     public static void main(String[] args) {
-        
-    } public static int findFloor(int[] arr, int k) {
-                int start =0;
-                int end = arr.length-1;
-                int ans = 0;
+        int[] arr = {1, 2, 4, 6, 8, 10};
+        int k = 5;
 
-                while (start<=end) {
-                    int mid = start+ (end-start)/2;
-                    //implement lower bound
+        int floorIndex = findFloor(arr, k);
+        if (floorIndex == -1) {
+            System.out.println("No floor exists for " + k);
+        } else {
+            System.out.println("Floor of " + k + " is " + arr[floorIndex] + " at index " + floorIndex);
+        }
+    }
 
-                    //  find the index (0-based) of the largest element in arr[] that is less than or equal to k. This element is called the "floor" of k. If such an element does not exist, return -1.
+    public static int findFloor(int[] arr, int k) {
+        int start = 0;
+        int end = arr.length - 1;
+        int ans = -1; // start with -1 (no floor found yet)
 
-                        if(arr[mid]==k){
-                            return mid;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
 
-                        }
-
-                        if(arr[mid]<k){
-                            start = mid+1;
-                            ans=mid;
-
-                        }else{
-                            end = mid-1;
-                        }
-
-
-// for lower bound return arr[mid]<k ,. i.e store it your ans variable
-                }
-                return ans;
-
+            if (arr[mid] == k) {
+                return mid; // exact match → floor found
             }
 
-
+            if (arr[mid] < k) {
+                ans = mid; // candidate floor
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
         }
 
+        return ans;
+    }
+}
