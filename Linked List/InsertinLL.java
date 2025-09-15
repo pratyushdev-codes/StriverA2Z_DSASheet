@@ -1,95 +1,47 @@
-// class Node {
-//     int data;
-//     Node next;
+class LinkedList {
+    // Node class with constructor
+    static class Node {
+        int data;
+        Node next;
 
-//     Node(int x) {
-//         data = x;
-//         next = null;
-//     }
-// }
-
-// public class InsertinLL {
-
-//     public static void main(String[] args) {
-//         Node head = new Node(10);
-//         head.next = new Node(20);
-//         head.next.next = new Node(30);
-
-//         head = insertAtEnd(head, 40);
-
-//         printList(head);
-//     }
-
-//     public static Node insertAtEnd(Node head, int X) {
-//         Node newNode = new Node(X);
-//         if (head == null) {
-//             return newNode; // If list is empty, return new node as head
-//         }
-        
-//         Node temp = head;
-//         while (temp.next != null) {
-//             temp = temp.next;
-//         }
-//         temp.next = newNode; // Insert at the end
-//         return head;
-//     }
-
-//     public static void printList(Node head) {
-//         Node temp = head;
-//         while (temp != null) {
-//             System.out.print(temp.data + " -> ");
-//             temp = temp.next;
-//         }
-//         System.out.println("NULL");
-//     }
-// }
-
-class Node{
-    int data;
-    Node next;
-
-    Node(int X){
-        data= X;
-        next= null;
+        Node(int data) {   // constructor
+            this.data = data;
+            this.next = null;
+        }
     }
-}
 
-public class InsertinLL {
+    private Node head;
 
-    public static void main(String[] args) {
+    // Constructor for LinkedList
+    LinkedList() {
+        this.head = null;
+    }
 
-        Node head = new Node(10);
-        head.next = new Node(20);
-        head.next.next= new Node(30);
+    // Insert at head
+    public void insertAtHead(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;  // link new node to current head
+        head = newNode;       // update head
+    }
 
-
-        head= insertAtEnd(head, 20);
-        printList(head);
-        
-    }public static Node insertAtEnd(Node head, int X) {
-      Node newNode = new Node(X);
-      if(head==null){
-        return null;
-      }
-
-      Node temp = head;
-
-      while (temp.next!=null) {
-        temp= temp.next;
-
-        
-      }
-      temp.next= newNode;
-
-      return head;
-
-
-    } public static void printList(Node head) {
-        Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.data + " -> ");
-            temp = temp.next;
+    // Print the Linked List
+    public void printList() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
         }
         System.out.println("NULL");
+    }
+
+    // Main method to test
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+
+        list.insertAtHead(10);
+        list.insertAtHead(20);
+        list.insertAtHead(30);
+
+        list.printList(); // Output: 30 -> 20 -> 10 -> NULL
     }
 }
