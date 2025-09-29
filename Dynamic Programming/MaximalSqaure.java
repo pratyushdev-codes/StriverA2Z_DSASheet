@@ -16,8 +16,9 @@ public class MaximalSqaure {
                 }
                 ans = Math.max(ans , dp[i][j]);
             }
+            return ans*ans;
         }
-        return ans*ans;
+      
         
     }
 }
